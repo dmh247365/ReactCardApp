@@ -1,6 +1,6 @@
 module.exports = {
   // entry: "./src/index.js",
-  entry: "./src/playground/redux-101.js",
+  entry: "./src/playground/cardLogic.js",
   module: {
     rules: [
       {
