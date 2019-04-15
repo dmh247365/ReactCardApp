@@ -1,9 +1,15 @@
 .button {
-  background: $blue;
+  background-color: $blue;
   border: none;
   border-radius: 12px;
   color: white;
   font-size: $font-size-large;
   font-weight: 300;
+  width: 125px;
+  height: 50px;
   padding: $s-size;
+}
+
+.button--start {
+  width: 200px;
 }

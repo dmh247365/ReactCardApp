@@ -2,8 +2,19 @@
   border-radius: 25px;
   height: 50px;
   margin-bottom: 20px;
-  text-align: center;
   width: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: $blue;
+  color: white;
+  font-size: $font-size-large;
+  font-weight: 300;
+}
+
+.paoBox__title {
+  // display: flex;
+  // justify-content: center;
 }
 
 .paoBox--red {

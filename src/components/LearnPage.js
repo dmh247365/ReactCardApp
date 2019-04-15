@@ -1,27 +1,58 @@
 import React from "react";
 
-// need to put in:-
-//1 - header
-//2 - image box
-//3 - a person box (PAO component)
-//4 - a action box (PAO component)
-//5 - a object box (PAO component)
-//6 - stop button (component)
-// 7 - next button (component)
+class LearnPage extends React.Component {
+  constructor(props) {
+    super(props);
+    this.handleToggleReveal = this.handleToggleReveal.bind(this);
+    this.state = {
+      visibilityReveal: true,
+      visibilityCorrect: false,
+      person: "Steve Davies",
+      action: "cueing",
+      object: "12 red snooker balls"
+    };
+  }
 
-const LearnPage = () => (
-  <div>
-    <div>
-      <div className="content-container">
-        <h1>This is the learning page component</h1>
+  handleToggleReveal() {
+    this.setState(prevState => {
+      return {
+        visibilityReveal: !prevState.visibilityReveal
+      };
+    });
+  }
+
+  render() {
+    return (
+      <div>
+        <div className="content-container">
+          <div>
+            <img src="./images/cards/KH.svg" alt="playing cards" />
+          </div>
+          <div className="paoBox">
+            <div className="paoBox__title">
+              {this.state.visibilityReveal ? "Person" : `${this.state.person}`}
+            </div>
+          </div>
+          <div className="paoBox">
+            <div className="paoBox__title">
+              {this.state.visibilityReveal ? "Action" : `${this.state.action}`}
+            </div>
+          </div>
+          <div className="paoBox">
+            <div className="paoBox__title">
+              {this.state.visibilityReveal ? "Object" : `${this.state.object}`}
+            </div>
+          </div>
+          <div className="button-spacing">
+            <button className="button">Quit</button>
+            <button onClick={this.handleToggleReveal} className="button">
+              {this.state.visibilityReveal ? "Reveal" : "Correct"}
+            </button>
+          </div>
+        </div>
       </div>
-      <div className="paoBox paoBox--red">Person</div>
-      <div className="paoBox paoBox--amber">Action</div>
-      <div className="paoBox paoBox--green">Object</div>
-      <button className="button">Quit</button>
-      <button className="button">Reveal</button>
-    </div>
-  </div>
-);
+    );
+  }
+}
 
 export default LearnPage;
