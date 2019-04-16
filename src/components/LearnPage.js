@@ -1,52 +1,109 @@
 import React from "react";
+import { connect } from "react-redux";
 
 class LearnPage extends React.Component {
   constructor(props) {
     super(props);
-    this.handleToggleReveal = this.handleToggleReveal.bind(this);
+    this.toggleBtnQuitWrong = this.toggleBtnQuitWrong.bind(this);
+    this.toggleBtnRevealCorrect = this.toggleBtnRevealCorrect.bind(this);
+    console.log("props", props);
+
     this.state = {
-      visibilityReveal: true,
-      visibilityCorrect: false,
-      person: "Steve Davies",
-      action: "cueing",
-      object: "12 red snooker balls"
+      revealPAO: false,
+      btnQuitReveal: true,
+      cardCount: 0,
+      cardCorrectCount: 0
     };
   }
 
-  handleToggleReveal() {
+  toggleBtnRevealCorrect() {
     this.setState(prevState => {
-      return {
-        visibilityReveal: !prevState.visibilityReveal
-      };
+      if (this.state.btnQuitReveal == true) {
+        return {
+          revealPAO: true,
+          btnQuitReveal: false
+        };
+      } else if (this.state.cardCount < 12) {
+        return {
+          cardCorrectCount: prevState.cardCorrectCount + 1,
+          cardCount: prevState.cardCount + 1,
+          revealPAO: false,
+          btnQuitReveal: true
+        };
+      } else {
+        return {
+          cardCount: 0,
+          revealPAO: false
+        };
+      }
+    });
+  }
+
+  toggleBtnQuitWrong() {
+    this.setState(prevState => {
+      if (this.state.btnQuitReveal == true) {
+        return this.props.history.push({
+          pathname: "/results",
+          state: this.state
+        });
+        {
+          console.log(props);
+        }
+      } else {
+        return {
+          cardCount: prevState.cardCount + 1,
+          btnQuitReveal: true,
+          revealPAO: false
+        };
+      }
     });
   }
 
   render() {
+    console.log(this.props.cards);
+    console.log(this.state);
+    console.log(this.state.visibilityReveal);
+    console.log(this.state.cardCount);
+    console.log(this.props.cards[0].ImageURL);
     return (
       <div>
         <div className="content-container">
           <div>
-            <img src="./images/cards/KH.svg" alt="playing cards" />
+            <img
+              src={
+                "./images/cards/" +
+                `${this.props.cards[this.state.cardCount].ImageURL}`
+              }
+              alt="playing cards"
+            />
           </div>
           <div className="paoBox">
             <div className="paoBox__title">
-              {this.state.visibilityReveal ? "Person" : `${this.state.person}`}
+              {this.state.revealPAO
+                ? `${this.props.cards[this.state.cardCount].Person}`
+                : "Person"}
             </div>
           </div>
           <div className="paoBox">
             <div className="paoBox__title">
-              {this.state.visibilityReveal ? "Action" : `${this.state.action}`}
+              {this.state.revealPAO
+                ? `${this.props.cards[this.state.cardCount].Action}`
+                : "Action"}
             </div>
           </div>
           <div className="paoBox">
             <div className="paoBox__title">
-              {this.state.visibilityReveal ? "Object" : `${this.state.object}`}
+              {this.state.revealPAO
+                ? `${this.props.cards[this.state.cardCount].Object}`
+                : "Object"}
             </div>
           </div>
           <div className="button-spacing">
-            <button className="button">Quit</button>
-            <button onClick={this.handleToggleReveal} className="button">
-              {this.state.visibilityReveal ? "Reveal" : "Correct"}
+            <button onClick={this.toggleBtnQuitWrong} className="button">
+              {this.state.revealPAO ? "Wrong" : "Quit"}
+            </button>
+            <button onClick={this.toggleBtnRevealCorrect} className="button">
+              {this.state.revealPAO ? "Correct" : "Reveal"}
             </button>
           </div>
         </div>
@@ -55,4 +112,10 @@ class LearnPage extends React.Component {
   }
 }
 
-export default LearnPage;
+const mapStateToProps = state => {
+  return {
+    cards: state.cards
+  };
+};
+
+export default connect(mapStateToProps)(LearnPage);
