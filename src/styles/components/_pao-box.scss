@@ -1,8 +1,8 @@
 .paoBox {
   border-radius: 25px;
-  height: 50px;
+  height: 40px;
   margin-bottom: 20px;
-  width: 400px;
+  width: 350px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -12,19 +12,9 @@
   font-weight: 300;
 }
 
-.paoBox__title {
-  // display: flex;
-  // justify-content: center;
-}
-
-.paoBox--red {
-  background: #ff0000;
-}
-
-.paoBox--amber {
-  background: #ffbf00;
-}
-
-.paoBox--green {
-  background: #73ad21;
+@media (min-width: 768px) {
+  .paoBox {
+    width: 400px;
+    height: 50px;
+  }
 }

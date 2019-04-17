@@ -82,21 +82,21 @@ class LearnPage extends React.Component {
             />
           </div>
           <div className="paoBox">
-            <div className="paoBox__title">
+            <div>
               {this.state.revealPAO
                 ? `${this.props.cards[this.state.cardCount].Person}`
                 : "Person"}
             </div>
           </div>
           <div className="paoBox">
-            <div className="paoBox__title">
+            <div>
               {this.state.revealPAO
                 ? `${this.props.cards[this.state.cardCount].Action}`
                 : "Action"}
             </div>
           </div>
           <div className="paoBox">
-            <div className="paoBox__title">
+            <div>
               {this.state.revealPAO
                 ? `${this.props.cards[this.state.cardCount].Object}`
                 : "Object"}

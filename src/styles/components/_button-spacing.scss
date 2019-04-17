@@ -1,6 +1,11 @@
 .button-spacing {
-  // background-color: red;
-  width: 40rem;
+  width: 30rem;
   display: flex;
   justify-content: space-between;
+}
+
+@media (min-width: 768px) {
+  .button-spacing {
+    width: 40rem;
+  }
 }

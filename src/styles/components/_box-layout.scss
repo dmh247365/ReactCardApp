@@ -1,11 +1,17 @@
 .box-layout {
   align-items: center;
-  background: url("/images/Brain_Large.jpg");
+  background: url("/images/Brain_Smaller.jpg");
+  // background-color: red;
   background-size: cover;
   display: flex;
   height: 100vh;
   justify-content: center;
   width: 100vw;
+}
+
+.box-layout__fourzerofour {
+  background: url("/images/fourzerofour_Smaller.jpg");
+  background-size: cover;
 }
 
 .box-layout__box {
@@ -19,4 +25,17 @@
 .box-layout__title {
   margin: 0 0 $m-size 0;
   line-height: 1;
+}
+
+@media (min-width: 768px) {
+  .box-layout {
+    // background-color: blue;
+    background: url("/images/Brain_Large.jpg");
+    background-size: cover;
+  }
+
+  .box-layout__fourzerofour {
+    background: url("/images/fourzerofour_Small.jpg");
+    background-size: cover;
+  }
 }

@@ -1,6 +1,6 @@
 .results-box {
   align-items: center;
-  background: url("/images/fireworks_Large.jpg");
+  background: url("/images/fireworks_Smaller.jpg");
   background-size: cover;
   display: flex;
   height: 100vh;
@@ -11,7 +11,7 @@
 .results-layout {
   background: fade-out(white, 0.15);
   border-radius: 5px;
-  padding: $l-size $m-size;
+  padding: 12px 10px;
   text-align: center;
   font-weight: bold;
 }
@@ -22,4 +22,13 @@
 
 .results-box__title {
   font-size: 3rem;
+}
+
+@media (min-width: 768px) {
+  .result-box {
+    background: url("/images/fireworks_Large.jpg");
+  }
+  .results-layout {
+    padding: $l-size $m-size;
+  }
 }
