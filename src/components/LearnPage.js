@@ -31,10 +31,10 @@ class LearnPage extends React.Component {
           btnQuitReveal: true
         };
       } else {
-        return {
-          cardCount: 0,
-          revealPAO: false
-        };
+        return this.props.history.push({
+          pathname: "/results",
+          state: this.state
+        });
       }
     });
   }
