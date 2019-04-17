@@ -69,6 +69,10 @@ class LearnPage extends React.Component {
       <div>
         <div className="content-container">
           <div>
+            <div className="countbar countbar__heading">Memorize</div>
+            <div className="countbar countbar__cards">
+              Card: {this.state.cardCount + 1}
+            </div>
             <img
               src={
                 "./images/cards/" +

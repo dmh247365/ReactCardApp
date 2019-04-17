@@ -2,7 +2,7 @@ import React from "react";
 
 const Header = () => (
   <header>
-    <h1>The card memory app</h1>
+    <h1>Memorize</h1>
   </header>
 );
 

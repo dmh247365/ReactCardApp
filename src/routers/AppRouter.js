@@ -5,12 +5,11 @@ import LearnPage from "../components/LearnPage";
 import NotFoundPage from "../components/NotFoundPage";
 import ResultsPage from "../components/ResultsPage";
 import RevealPage from "../components/RevealPage";
-import Header from "../components/Header";
+// import Header from "../components/Header";
 
 const AppRouter = () => (
   <BrowserRouter>
     <div>
-      <Header />
       <Switch>
         <Route path="/" exact component={WelcomePage} />
         <Route path="/learn" component={LearnPage} />
